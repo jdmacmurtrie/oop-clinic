@@ -64,7 +64,7 @@ RSpec.describe Album do
         if album.nil?
           albums << new_album
         end
-        new_album.tracks << track
+        new_album.tracks << Track.new(track[:track_id], track[:title], track[:track_number], track[:duration_ms])
       end
       expect(new_album.duration).to eq("19:07:03")
     end
@@ -78,10 +78,10 @@ RSpec.describe Album do
         if album.nil?
           albums << new_album
         end
-        new_album.tracks << track
+        new_album.tracks << Track.new(track[:track_id], track[:title], track[:track_number], track[:duration_ms])
       end
 
-      expect(new_album.track_list).to eq("1 - We Are One (Ole Ola) [The Official 2014 FIFA World Cup Song]\n2 - Revenge of the Lol Cat\n")
+      expect(new_album.track_list).to eq("1) We Are One (Ole Ola) [The Official 2014 FIFA World Cup Song]\n2) Revenge of the Lol Cat\n")
     end
   end
 
@@ -93,9 +93,9 @@ RSpec.describe Album do
         if album.nil?
           albums << new_album
         end
-        new_album.tracks << track
+        new_album.tracks << Track.new(track[:track_id], track[:title], track[:track_number], track[:duration_ms])
       end
-      expect(new_album.summary).to eq("Name: We Are One\nArtist(s): Pitbull\nDuration: 19:07:03\nTracks:\n1 - We Are One (Ole Ola) [The Official 2014 FIFA World Cup Song]\n2 - Revenge of the Lol Cat\n")
+      expect(new_album.summary).to eq("Name: We Are One\nArtist(s): Pitbull\nDuration: 19:07:03\nTracks:\n1) We Are One (Ole Ola) [The Official 2014 FIFA World Cup Song]\n2) Revenge of the Lol Cat\n")
     end
   end
 end

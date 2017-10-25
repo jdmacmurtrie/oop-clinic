@@ -1,5 +1,6 @@
 require_relative 'space_jams'
 require_relative 'album'
+require_relative 'track'
 
 albums = []
 
@@ -9,7 +10,7 @@ TRACKS.each do |track|
     album = Album.new(track[:album_id], track[:album_name], track[:artists])
     albums << album
   end
-  album.tracks << track
+  album.tracks << Track.new(track[:track_id], track[:title],  track[:track_number], track[:duration_ms])
 end
 
 albums.each do |album|
